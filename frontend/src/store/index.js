@@ -12,6 +12,14 @@ export default new Vuex.Store({
     createTodo(state, payload) {
       state.todos.push(payload.data);
     },
+    deleteTodo(state, payload) {
+      for (let i in state.todos) {
+        if (state.todos[i].id === payload) {
+          state.todos.splice(i, 1);
+          break;
+        }
+      }
+    },
     fetchTodos(state, payload) {
       state.todos = payload;
     }
@@ -24,6 +32,16 @@ export default new Vuex.Store({
         })
         .then(response => {
           context.commit("createTodo", response);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    deleteTodo(context, payload) {
+      axios
+        .delete("http://127.0.0.1:8000/api/todos/" + payload + "/")
+        .then(() => {
+          context.commit("deleteTodo", payload);
         })
         .catch(error => {
           console.log(error);
