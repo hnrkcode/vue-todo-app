@@ -6,7 +6,12 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    todos: null
+    todos: []
+  },
+  getters: {
+    todoCount: state => {
+      return state.todos.length;
+    }
   },
   mutations: {
     createTodo(state, payload) {
@@ -28,7 +33,8 @@ export default new Vuex.Store({
     createTodo(context, payload) {
       axios
         .post("http://127.0.0.1:8000/api/todos/", {
-          name: payload
+          name: payload.header,
+          text: payload.body
         })
         .then(response => {
           context.commit("createTodo", response);

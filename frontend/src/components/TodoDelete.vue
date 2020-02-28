@@ -1,5 +1,7 @@
 <template>
-  <button @click="deleteTodo(id)">Delete {{ id }}</button>
+  <button class="delete" aria-label="delete" @click="deleteTodo(id)">
+    Delete
+  </button>
 </template>
 
 <script>
