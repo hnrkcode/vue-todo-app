@@ -5,4 +5,4 @@ from .import models
 class TodoSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.TodoModel
-        fields = ("id", "name",)
+        fields = ("id", "name", "text",)
