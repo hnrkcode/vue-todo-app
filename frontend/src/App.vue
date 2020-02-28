@@ -1,5 +1,10 @@
 <template>
   <section class="section">
+    <div class="columns">
+      <div class="column is-half is-offset-one-quarter">
+        <h1 class="title has-text-centered">VUE TODO APP</h1>
+      </div>
+    </div>
     <app-todo-create></app-todo-create>
     <app-todo-list></app-todo-list>
   </section>
