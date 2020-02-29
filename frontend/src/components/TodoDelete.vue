@@ -1,7 +1,7 @@
 <template>
-  <button class="delete" aria-label="delete" @click="deleteTodo(id)">
-    Delete
-  </button>
+  <span class="icon" @click="deleteTodo(id)">
+    <font-awesome-icon icon="trash-alt" />
+  </span>
 </template>
 
 <script>
