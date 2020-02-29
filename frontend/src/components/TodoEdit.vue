@@ -106,3 +106,15 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.modal-card-body {
+  background-color: #282828;
+}
+
+.modal-card-head,
+.modal-card-foot {
+  background-color: #282828;
+  border: none;
+}
+</style>

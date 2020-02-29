@@ -41,3 +41,13 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.message {
+  border-radius: 6px !important;
+}
+
+.message-body {
+  background-color: #282828;
+}
+</style>
