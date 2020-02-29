@@ -3,7 +3,7 @@
     <div class="column is-one-third is-offset-one-third" v-if="todoCount > 0">
       <article
         class="message"
-        v-for="todo in this.$store.state.todos"
+        v-for="todo in todoList"
         :key="todo.id"
       >
         <div class="message-header">
@@ -31,7 +31,10 @@ import TodoButtons from "@/components/TodoButtons.vue";
 
 export default {
   computed: {
-    ...mapGetters(["todoCount"])
+    ...mapGetters([
+      "todoCount",
+      "todoList"
+    ])
   },
   components: {
     TodoButtons

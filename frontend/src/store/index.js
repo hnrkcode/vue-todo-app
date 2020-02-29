@@ -11,6 +11,9 @@ export default new Vuex.Store({
   getters: {
     todoCount: state => {
       return state.todos.length;
+    },
+    todoList: state => {
+      return state.todos;
     }
   },
   mutations: {
