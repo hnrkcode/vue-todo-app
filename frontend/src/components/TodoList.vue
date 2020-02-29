@@ -8,7 +8,11 @@
       >
         <div class="message-header">
           <p>{{ todo.name }}</p>
-          <app-todo-delete :id="todo.id"></app-todo-delete>
+          <todo-buttons
+            :id="todo.id"
+            :name="todo.name"
+            :text="todo.text"
+          ></todo-buttons>
         </div>
         <div class="message-body">
           <p>{{ todo.text }}</p>
@@ -23,14 +27,14 @@
 
 <script>
 import { mapGetters } from "vuex";
-import TodoDelete from "@/components/TodoDelete.vue";
+import TodoButtons from "@/components/TodoButtons.vue";
 
 export default {
   computed: {
     ...mapGetters(["todoCount"])
   },
   components: {
-    appTodoDelete: TodoDelete
+    TodoButtons
   },
   created() {
     this.$store.dispatch("fetchTodos");

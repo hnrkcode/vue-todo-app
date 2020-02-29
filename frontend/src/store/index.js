@@ -25,6 +25,15 @@ export default new Vuex.Store({
         }
       }
     },
+    editTodo(state, payload) {
+      for (let i in state.todos) {
+        if (state.todos[i].id === payload.id) {
+          state.todos[i].name = payload.header;
+          state.todos[i].text = payload.body;
+          break;
+        }
+      }
+    },
     fetchTodos(state, payload) {
       state.todos = payload;
     }
@@ -48,6 +57,19 @@ export default new Vuex.Store({
         .delete("http://127.0.0.1:8000/api/todos/" + payload + "/")
         .then(() => {
           context.commit("deleteTodo", payload);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    editTodo(context, payload) {
+      axios
+        .put("http://127.0.0.1:8000/api/todos/" + payload.id + "/", {
+          name: payload.header,
+          text: payload.body
+        })
+        .then(() => {
+          context.commit("editTodo", payload);
         })
         .catch(error => {
           console.log(error);
