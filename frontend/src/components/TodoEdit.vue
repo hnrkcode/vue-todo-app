@@ -14,25 +14,21 @@
             <div class="control">
               <input
                 class="input"
-                :class="{ 'is-danger': emptyText }"
                 ref="text"
                 type="text"
                 :placeholder="name"
                 v-model="todoHeader"
               />
             </div>
-            <p class="help is-danger" v-if="emptyText">Required field</p>
           </div>
           <div class="field">
             <div class="control">
               <textarea
                 class="textarea"
-                :class="{ 'is-danger': emptyTextarea }"
                 ref="textarea"
                 :placeholder="text"
                 v-model="todoBody"
               ></textarea>
-              <p class="help is-danger" v-if="emptyTextarea">Required field</p>
             </div>
           </div>
         </section>
@@ -52,44 +48,17 @@ export default {
   props: ["id", "name", "text"],
   data() {
     return {
-      todoHeader: "",
-      todoBody: "",
-      isActive: false,
-      emptyText: false,
-      emptyTextarea: false
+      todoHeader: this.text,
+      todoBody: this.name,
+      isActive: false
     };
   },
   methods: {
     deactivateModal() {
-      this.todoHeader = "";
-      this.todoBody = "";
       this.isActive = false;
-      this.emptyText = false;
-      this.emptyTextarea = false;
     },
     activateModal() {
       this.isActive = true;
-    },
-    validInput() {
-      if (!this.todoHeader || !this.todoBody) {
-        if (!this.todoBody) {
-          this.emptyTextarea = true;
-          this.$refs.textarea.focus();
-        } else {
-          this.emptyTextarea = false;
-        }
-
-        if (!this.todoHeader) {
-          this.emptyText = true;
-          this.$refs.text.focus();
-        } else {
-          this.emptyText = false;
-        }
-
-        return false;
-      }
-
-      return true;
     },
     editTodo() {
       const payload = {
@@ -98,10 +67,8 @@ export default {
         body: this.todoBody
       };
 
-      if (this.validInput()) {
-        this.$store.dispatch("editTodo", payload);
-        this.deactivateModal();
-      }
+      this.$store.dispatch("editTodo", payload);
+      this.deactivateModal();
     }
   }
 };
