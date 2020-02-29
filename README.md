@@ -1,10 +1,30 @@
-# backend
+# Vue todo app
+
+Todo app created with Vue.js & Django REST framework.
+
+![preview](preview.gif)
+
+# Backend
 
 ## Project setup
 
-Todo...
+```
+pipenv shell
+```
 
-# frontend
+```
+pipenv install
+```
+
+```
+python manage.py migrate
+```
+
+```
+python manage.py runserver
+```
+
+# Frontend
 
 ## Project setup
 ```
