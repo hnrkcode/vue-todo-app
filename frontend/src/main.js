@@ -7,10 +7,11 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
   faEdit,
   faTrashAlt,
-  faExclamationTriangle
+  faExclamationTriangle,
+  faEllipsisH
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faEdit, faTrashAlt, faExclamationTriangle);
+library.add(faEdit, faTrashAlt, faExclamationTriangle, faEllipsisH);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 

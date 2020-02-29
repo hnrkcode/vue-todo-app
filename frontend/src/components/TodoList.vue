@@ -19,8 +19,8 @@
         </div>
       </article>
     </div>
-    <div class="column is-half is-offset-one-quarter" v-else>
-      <p>Empty {{ todoCount }}</p>
+    <div class="column is-half is-offset-one-quarter has-text-centered" v-else>
+      <font-awesome-icon icon="ellipsis-h" />
     </div>
   </div>
 </template>
