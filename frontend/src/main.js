@@ -3,10 +3,14 @@ import App from "./App.vue";
 import store from "./store";
 import "bulma/css/bulma.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import {
+  faEdit,
+  faTrashAlt,
+  faExclamationTriangle
+} from "@fortawesome/free-solid-svg-icons";
 
-library.add(faEdit, faTrashAlt);
+library.add(faEdit, faTrashAlt, faExclamationTriangle);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 

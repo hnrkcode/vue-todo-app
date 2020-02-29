@@ -2,7 +2,7 @@
   <div class="columns">
     <div class="column is-one-third is-offset-one-third">
       <div class="field">
-        <div class="control">
+        <div class="control has-icons-right">
           <input
             class="input"
             :class="{ 'is-danger': emptyText }"
@@ -11,11 +11,14 @@
             placeholder="Name"
             v-model="todoHeader"
           />
+          <span class="icon is-small is-right" v-if="emptyText">
+            <font-awesome-icon icon="exclamation-triangle" />
+          </span>
         </div>
         <p class="help is-danger" v-if="emptyText">Required field</p>
       </div>
       <div class="field">
-        <div class="control">
+        <div class="control has-icons-right">
           <textarea
             class="textarea"
             :class="{ 'is-danger': emptyTextarea }"
@@ -24,6 +27,9 @@
             v-model="todoBody"
           ></textarea>
           <p class="help is-danger" v-if="emptyTextarea">Required field</p>
+          <span class="icon is-small is-right" v-if="emptyTextarea">
+            <font-awesome-icon icon="exclamation-triangle" />
+          </span>
         </div>
       </div>
       <div class="field">
