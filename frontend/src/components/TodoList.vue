@@ -1,6 +1,6 @@
 <template>
   <div class="columns">
-    <div class="column is-half is-offset-one-quarter" v-if="todoCount > 0">
+    <div class="column is-one-third is-offset-one-third" v-if="todoCount > 0">
       <article
         class="message"
         v-for="todo in this.$store.state.todos"

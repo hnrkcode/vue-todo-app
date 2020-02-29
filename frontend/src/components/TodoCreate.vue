@@ -1,6 +1,6 @@
 <template>
   <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
+    <div class="column is-one-third is-offset-one-third">
       <div class="field">
         <div class="control">
           <input
