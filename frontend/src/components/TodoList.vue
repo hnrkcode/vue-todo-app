@@ -13,6 +13,12 @@
           </div>
           <div class="message-body">
             <p>{{ todo.text }}</p>
+            <p class="date is-italic is-size-7">
+              <span class="icon">
+                <font-awesome-icon icon="calendar-alt" />
+              </span>
+              {{ todo.created }}
+            </p>
           </div>
         </article>
       </transition-group>
@@ -41,6 +47,10 @@ export default {
 </script>
 
 <style scoped>
+.date {
+  margin-top: 5px;
+}
+
 .message {
   border-radius: 6px !important;
 }

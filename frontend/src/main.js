@@ -8,10 +8,17 @@ import {
   faEdit,
   faTrashAlt,
   faExclamationTriangle,
-  faEllipsisH
+  faEllipsisH,
+  faCalendarAlt
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faEdit, faTrashAlt, faExclamationTriangle, faEllipsisH);
+library.add(
+  faEdit,
+  faTrashAlt,
+  faExclamationTriangle,
+  faEllipsisH,
+  faCalendarAlt
+);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
