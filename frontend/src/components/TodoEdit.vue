@@ -50,8 +50,8 @@ export default {
   props: ["id", "name", "text"],
   data() {
     return {
-      todoHeader: this.text,
-      todoBody: this.name,
+      todoHeader: this.name,
+      todoBody: this.text,
       isActive: false
     };
   },
