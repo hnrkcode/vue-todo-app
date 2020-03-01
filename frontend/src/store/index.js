@@ -18,7 +18,8 @@ export default new Vuex.Store({
   },
   mutations: {
     createTodo(state, payload) {
-      state.todos.push(payload.data);
+      // Add new data at the beginning of the array.
+      state.todos.splice(0, 0, payload.data);
     },
     deleteTodo(state, payload) {
       for (let i in state.todos) {
@@ -38,6 +39,7 @@ export default new Vuex.Store({
       }
     },
     fetchTodos(state, payload) {
+      payload.reverse();
       state.todos = payload;
     }
   },
