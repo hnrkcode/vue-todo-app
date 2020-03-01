@@ -55,8 +55,13 @@ export default {
   border-radius: 6px !important;
 }
 
+.message-header {
+  overflow-wrap: anywhere;
+}
+
 .message-body {
   background-color: #282828;
+  overflow-wrap: break-word;
 }
 
 /* Animate additon and subtraction of todo items */
