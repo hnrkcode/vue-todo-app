@@ -1,13 +1,15 @@
 <template>
-  <section class="section">
-    <div class="columns">
-      <div class="column">
-        <h1 class="title has-text-centered">VUE TODO APP</h1>
+  <transition name="todo" appear>
+    <section class="section">
+      <div class="columns">
+        <div class="column">
+          <h1 class="title has-text-centered">VUE TODO APP</h1>
+        </div>
       </div>
-    </div>
-    <app-todo-create></app-todo-create>
-    <app-todo-list></app-todo-list>
-  </section>
+      <app-todo-create></app-todo-create>
+      <app-todo-list></app-todo-list>
+    </section>
+  </transition>
 </template>
 
 <script>
@@ -23,6 +25,15 @@ export default {
 </script>
 
 <style>
+/* Fade in when page loads */
+.todo-enter {
+  opacity: 0;
+}
+
+.todo-enter-active {
+  transition: opacity 1.5s;
+}
+
 html {
   min-height: 100%;
   background-color: #1c1c1c !important;

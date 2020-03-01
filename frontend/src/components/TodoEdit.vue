@@ -3,43 +3,45 @@
     <span class="icon" @click="activateModal()">
       <font-awesome-icon icon="edit" />
     </span>
-    <div class="modal" :class="{ 'is-active': isActive }">
-      <div class="modal-background" @click="deactivateModal()"></div>
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title">Edit</p>
-        </header>
-        <section class="modal-card-body">
-          <div class="field">
-            <div class="control">
-              <input
-                class="input"
-                ref="text"
-                type="text"
-                :placeholder="name"
-                v-model="todoHeader"
-              />
+    <transition name="modal">
+      <div class="modal" :class="{ 'is-active': isActive }" v-if="isActive">
+        <div class="modal-background" @click="deactivateModal()"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Edit</p>
+          </header>
+          <section class="modal-card-body">
+            <div class="field">
+              <div class="control">
+                <input
+                  class="input"
+                  ref="text"
+                  type="text"
+                  :placeholder="name"
+                  v-model="todoHeader"
+                />
+              </div>
             </div>
-          </div>
-          <div class="field">
-            <div class="control">
-              <textarea
-                class="textarea"
-                ref="textarea"
-                :placeholder="text"
-                v-model="todoBody"
-              ></textarea>
+            <div class="field">
+              <div class="control">
+                <textarea
+                  class="textarea"
+                  ref="textarea"
+                  :placeholder="text"
+                  v-model="todoBody"
+                ></textarea>
+              </div>
             </div>
-          </div>
-        </section>
-        <footer class="modal-card-foot">
-          <button class="button is-primary" @click="editTodo()">
-            Save changes
-          </button>
-          <button class="button" @click="deactivateModal()">Cancel</button>
-        </footer>
+          </section>
+          <footer class="modal-card-foot">
+            <button class="button is-primary" @click="editTodo()">
+              Save changes
+            </button>
+            <button class="button" @click="deactivateModal()">Cancel</button>
+          </footer>
+        </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -75,6 +77,20 @@ export default {
 </script>
 
 <style scoped>
+/* Fade in and out the modal */
+.modal-enter {
+  opacity: 0;
+}
+
+.modal-enter-active {
+  transition: opacity 0.3s;
+}
+
+.modal-leave-active {
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+
 .modal-card-body {
   background-color: #282828;
 }
