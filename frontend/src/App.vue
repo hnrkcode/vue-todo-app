@@ -23,14 +23,9 @@ export default {
 </script>
 
 <style>
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: #1c1c1c;
-}
 html {
-  height: 100%;
+  min-height: 100%;
+  background-color: #1c1c1c !important;
 }
 
 p {
