@@ -62,6 +62,7 @@ export default {
 .message-body {
   background-color: #282828;
   overflow-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 /* Animate additon and subtraction of todo items */
