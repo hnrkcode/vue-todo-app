@@ -24,7 +24,9 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black|Roboto&display=swap');
+
 /* Fade in when page loads */
 .todo-enter {
   opacity: 0;
@@ -40,10 +42,12 @@ html {
 }
 
 p {
+  font-family: 'Roboto';
   color: #eeeeee !important;
 }
 
 .title {
+  font-family: 'Archivo Black';
   color: #eeeeee !important;
 }
 
