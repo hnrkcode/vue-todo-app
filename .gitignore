@@ -4,6 +4,7 @@
 
 .vscode
 db.sqlite3
+__pycache__/
 
 ####################
 # Frontend project #
