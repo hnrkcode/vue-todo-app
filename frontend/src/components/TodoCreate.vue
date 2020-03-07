@@ -5,29 +5,42 @@
         <div class="control has-icons-right">
           <input
             class="input"
-            :class="{ 'is-danger': emptyText }"
+            :class="{ 'is-danger': emptyText || tooLongHeader }"
             ref="text"
             type="text"
             placeholder="Name"
             v-model="todoHeader"
+            :maxlength="characterLimit.header"
           />
-          <span class="icon is-small is-right" v-if="emptyText">
+          <span
+            class="icon is-small is-right"
+            v-if="emptyText || tooLongHeader"
+          >
             <font-awesome-icon icon="exclamation-triangle" />
           </span>
         </div>
         <p class="help is-danger" v-if="emptyText">Required field</p>
+        <p class="help is-danger" v-if="tooLongHeader">
+          Too many characters
+        </p>
       </div>
       <div class="field">
         <div class="control has-icons-right">
           <textarea
             class="textarea"
-            :class="{ 'is-danger': emptyTextarea }"
+            :class="{ 'is-danger': emptyTextarea || tooLongBody }"
             ref="textarea"
             placeholder="Description..."
             v-model="todoBody"
+            :maxlength="characterLimit.body"
           ></textarea>
+          <p>{{ characterCount }} / {{ characterLimit.body }}</p>
           <p class="help is-danger" v-if="emptyTextarea">Required field</p>
-          <span class="icon is-small is-right" v-if="emptyTextarea">
+          <p class="help is-danger" v-if="tooLongBody">Too many characters</p>
+          <span
+            class="icon is-small is-right"
+            v-if="emptyTextarea || tooLongBody"
+          >
             <font-awesome-icon icon="exclamation-triangle" />
           </span>
         </div>
@@ -50,11 +63,32 @@
 export default {
   data() {
     return {
+      characterLimit: {
+        header: 255,
+        body: 1000
+      },
       todoHeader: "",
       todoBody: "",
       emptyText: false,
       emptyTextarea: false
     };
+  },
+  computed: {
+    tooLongHeader() {
+      if (this.todoHeader.length <= this.characterLimit.header) {
+        return false;
+      }
+      return true;
+    },
+    tooLongBody() {
+      if (this.todoBody.length <= this.characterLimit.body) {
+        return false;
+      }
+      return true;
+    },
+    characterCount() {
+      return this.todoBody.length;
+    }
   },
   methods: {
     validInput() {
@@ -79,7 +113,7 @@ export default {
       return true;
     },
     createTodo() {
-      if (this.validInput()) {
+      if (this.validInput() && !this.tooLongHeader && !this.tooLongBody) {
         this.$store.dispatch("createTodo", {
           header: this.todoHeader,
           body: this.todoBody
