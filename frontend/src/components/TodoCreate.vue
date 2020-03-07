@@ -20,7 +20,7 @@
           </span>
         </div>
         <p class="help is-danger" v-if="emptyText">Required field</p>
-        <p class="help is-danger" v-if="tooLongHeader">
+        <p class="help is-danger" v-if="tooLongHeader || todoLimit.header">
           Too many characters
         </p>
       </div>
@@ -36,7 +36,9 @@
           ></textarea>
           <p>{{ characterCount }} / {{ characterLimit.body }}</p>
           <p class="help is-danger" v-if="emptyTextarea">Required field</p>
-          <p class="help is-danger" v-if="tooLongBody">Too many characters</p>
+          <p class="help is-danger" v-if="tooLongBody || todoLimit.body">
+            Too many characters
+          </p>
           <span
             class="icon is-small is-right"
             v-if="emptyTextarea || tooLongBody"
@@ -60,6 +62,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   data() {
     return {
@@ -74,6 +78,7 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(["todoLimit"]),
     tooLongHeader() {
       if (this.todoHeader.length <= this.characterLimit.header) {
         return false;

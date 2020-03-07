@@ -6,7 +6,11 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    todos: []
+    todos: [],
+    limit: {
+      header: false,
+      body: false
+    }
   },
   getters: {
     todoCount: state => {
@@ -14,6 +18,9 @@ export default new Vuex.Store({
     },
     todoList: state => {
       return state.todos;
+    },
+    todoLimit: state => {
+      return state.limit;
     }
   },
   mutations: {
@@ -41,6 +48,10 @@ export default new Vuex.Store({
     fetchTodos(state, payload) {
       payload.reverse();
       state.todos = payload;
+    },
+    setLimitStatus(state, payload) {
+      state.limit.header = payload.name;
+      state.limit.body = payload.text;
     }
   },
   actions: {
@@ -53,8 +64,18 @@ export default new Vuex.Store({
         .then(response => {
           context.commit("createTodo", response);
         })
-        .catch(error => {
-          console.log(error);
+        .then(() => {
+          // Reset limit status.
+          context.commit("setLimitStatus", {
+            header: false,
+            body: false
+          });
+        })
+        .catch(({ response: { data } }) => {
+          context.commit("setLimitStatus", {
+            name: data.name ? true : false,
+            text: data.text ? true : false
+          });
         });
     },
     deleteTodo(context, payload) {
