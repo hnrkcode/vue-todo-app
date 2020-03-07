@@ -4,5 +4,5 @@ from . import models
 
 
 class TodoViewSet(viewsets.ModelViewSet):
-    queryset = models.TodoModel.objects.all()
+    queryset = models.TodoModel.objects.all().order_by("-id")
     serializer_class = serializers.TodoSerializer

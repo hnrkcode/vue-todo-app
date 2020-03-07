@@ -46,7 +46,6 @@ export default new Vuex.Store({
       }
     },
     fetchTodos(state, payload) {
-      payload.reverse();
       state.todos = payload;
     },
     setLimitStatus(state, payload) {
