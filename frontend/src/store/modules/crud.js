@@ -59,7 +59,6 @@ const actions = {
         text: payload.body
       })
       .then(response => {
-        console.log(response);
         context.commit("createTodo", response);
       })
       .then(() => {

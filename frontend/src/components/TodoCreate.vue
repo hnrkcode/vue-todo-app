@@ -68,8 +68,8 @@ export default {
   data() {
     return {
       characterLimit: {
-        header: 255,
-        body: 1000
+        header: Number(process.env.VUE_APP_HEADER_CHARACTER_LIMIT),
+        body: Number(process.env.VUE_APP_BODY_CHARACTER_LIMIT)
       },
       todoHeader: "",
       todoBody: "",
