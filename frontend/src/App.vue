@@ -41,7 +41,7 @@ html {
   background-color: #1c1c1c !important;
 }
 
-p {
+.message p {
   font-family: "Roboto";
   color: #eeeeee !important;
 }

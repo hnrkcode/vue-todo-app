@@ -1,6 +1,9 @@
 <template>
   <div class="columns">
-    <div class="column is-one-third is-offset-one-third" v-if="todoCount > 0">
+    <div
+      class="column is-half-tablet is-offset-one-quarter-tablet is-one-third-desktop is-offset-one-third-desktop"
+      v-if="todoCount > 0"
+    >
       <transition-group name="fade">
         <article class="message" v-for="todo in todoList" :key="todo.id">
           <div class="message-header">

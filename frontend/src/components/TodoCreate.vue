@@ -1,6 +1,8 @@
 <template>
   <div class="columns">
-    <div class="column is-one-third is-offset-one-third">
+    <div
+      class="column is-half-tablet is-offset-one-quarter-tablet is-one-third-desktop is-offset-one-third-desktop"
+    >
       <div class="field">
         <div class="control has-icons-right">
           <input
@@ -34,11 +36,11 @@
             v-model="todoBody"
             :maxlength="characterLimit.body"
           ></textarea>
-          <p>{{ characterCount }} / {{ characterLimit.body }}</p>
           <p class="help is-danger" v-if="emptyTextarea">Required field</p>
           <p class="help is-danger" v-if="tooLongBody || todoLimit.body">
             Too many characters
           </p>
+          <p>{{ characterCount }} / {{ characterLimit.body }}</p>
           <span
             class="icon is-small is-right"
             v-if="emptyTextarea || tooLongBody"
