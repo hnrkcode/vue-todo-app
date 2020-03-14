@@ -63,13 +63,16 @@ export default {
       this.isActive = true;
     },
     editTodo() {
-      const payload = {
-        id: this.id,
-        header: this.todoHeader,
-        body: this.todoBody
-      };
+      // Only send a request to the server if the data has been modified.
+      if (this.todoHeader !== this.name || this.todoBody !== this.text) {
+        this.$store.dispatch("editTodo", {
+          id: this.id,
+          header: this.todoHeader,
+          body: this.todoBody
+        });
+      }
 
-      this.$store.dispatch("editTodo", payload);
+      // Close the edit modal.
       this.deactivateModal();
     }
   }
